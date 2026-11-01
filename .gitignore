@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+data_cache/
+results/*
+!results/.gitkeep
+
+# Environment files / secrets
+.env
+*.env
+frontend/.env
+frontend/.env.local

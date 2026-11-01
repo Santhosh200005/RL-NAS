@@ -1,0 +1,5 @@
+export default function ParetoChart({ points }: { points: { x: number; y: number; key: string }[] }) {
+  if (!points.length) return <div className="chart-empty">Pareto points appear after completed evaluations.</div>;
+  const w=720,h=300,p=45; const xs=points.map(v=>v.x), ys=points.map(v=>v.y); const xmin=Math.min(...xs), xmax=Math.max(...xs), ymin=Math.min(...ys), ymax=Math.max(...ys); const xr=xmax-xmin||1, yr=ymax-ymin||1;
+  return <svg viewBox={`0 0 ${w} ${h}`} className="chart" role="img" aria-label="pareto chart"><line x1={p} y1={h-p} x2={w-p} y2={h-p} className="axis"/><line x1={p} y1={p} x2={p} y2={h-p} className="axis"/>{points.map((v,i)=>{const cx=p+((v.x-xmin)/xr)*(w-p*2), cy=h-p-((v.y-ymin)/yr)*(h-p*2);return <g key={v.key+i}><circle cx={cx} cy={cy} r="5" className="dot"/><title>{v.key}: {v.y.toFixed(2)}%, {v.x} params</title></g>})}<text x={w/2} y={h-8} textAnchor="middle" className="chart-label">Parameters</text><text x="14" y={h/2} transform={`rotate(-90 14 ${h/2})`} textAnchor="middle" className="chart-label">Validation accuracy (%)</text></svg>;
+}

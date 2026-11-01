@@ -1,0 +1,12 @@
+torch>=2.3
+torchvision>=0.18
+numpy
+scipy
+scikit-learn
+pandas
+matplotlib
+pyyaml
+fastapi
+uvicorn[standard]
+httpx
+pytest
